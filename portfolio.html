@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<style>
+		body{
+			text-align: center;
+			background-color: #1e1e1e;
+		    color: #ffffffd8;
+		    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+		}
+		a{
+			color:#ffffff63;
+			font-size:15px;
+		}
+		img{
+			height:50px;
+			width:50px;
+		}
+		table, th, td {
+		    border: 1px solid black;
+		}
+		ul{
+			width: 100%;
+		}
+		li{
+			position: relative;
+			margin-left: -3%;
+		}
+	</style>
+	
+<script>
+	function start(){
+
+	}
+	function contentSelect(selected){
+  		var markup = "<iframe id='target' src='https://vweis.github.io/" + selected + "/index.html'></iframe>"
+  		document.getElementById("mainContent").innerHTML = markup
+
+		/* Need non-jQuery version for funsies
+  		$(".animationList").removeClass("active");
+  		$(".animationList:nth-of-type(" + (n+1) + ")").addClass("active");*/
+	}
+</script>
+</head>
+
+<body onload='start()'>
+
+<img src="https://www.w3schools.com/images/colorpicker.gif">
+
+<h1 id='Title'>Vincent Weis</h1>
+<a href='tel:1-480-797-3097' id='link' title="Phone Number">(480) 797-3097</a>   |   <a href='vrobweis@gmail.com' title="E-Mail">vweis@asu.edu</a>
+<br>
+<br>
+<button onclick='contentSelect("A1")'>A1</button>
+<button onclick='contentSelect("A2")'>A2</button>
+<button onclick='contentSelect("A3")'>A3</button>
+<button onclick='contentSelect("A4")'>A4</button>
+<button onclick='contentSelect("A5")'>A5</button>
+<button onclick='contentSelect("A6")'>A6</button>
+<button onclick='contentSelect("A7")'>A7</button>
+<hr>
+<div id='mainContent'>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

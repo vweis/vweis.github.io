@@ -1,0 +1,92 @@
+<html>
+
+<head>
+<script src='jquery-2.1.3.js'> </script>
+<link rel="stylesheet" href="animate.min.css">
+
+<style>
+  .animationList{
+    width: 100%;
+    height: 50px;
+    background: none;
+    border: none;
+    box-shadow: 0px 0px 1px;
+  }
+  #target {
+  animation-duration: 3s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
+}
+  body{
+    margin: 0px;
+  }
+  p{
+    margin:0px;
+    float: right;
+    word-wrap:break-word;
+  }
+  #timezoneSelection{
+    position: fixed;
+    min-width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    padding: 30%;
+    display: none;
+  }
+  #theListWraper{
+    width: 250px;
+    float: left;
+    height: 100%;
+    background: lightgray;
+  }
+  #theSelectedWraper{
+    width: 400px;
+    float: right;
+    position: absolute;
+    height: 400px;
+    margin:5% 35% 0% 20%;
+  }
+  .active{
+    background: gold;
+  }
+</style>
+<script>
+function animationSelect(selected){
+  var markup = "<div class='animated infinite " + selected + "' id='target' style='width:400px;height:400px;background-color:red;'></div>"
+  document.getElementById("theSelectedWraper").innerHTML = markup
+
+  $(".animationList").removeClass("active");
+  $(".animationList:nth-of-type(" + (n+1) + ")").addClass("active");
+}
+
+function start(){
+    animationSelect('');
+}
+</script>
+</head>
+
+<body onload='start()'>
+  <div id='theListWraper'>
+    <h1> Animate.css <h1>
+
+    <div id='theList'>
+        <button class='animationList' onclick="animationSelect('bounce')">bounce</button>
+        <button class='animationList' onclick="animationSelect('flash')">flash</button>
+        <button class='animationList' onclick="animationSelect('tada')">tada</button>
+        <button class='animationList' onclick="animationSelect('fadeIn')">fadeIn</button>
+        <button class='animationList' onclick="animationSelect('fadeOut')">fadeOut</button>
+        <button class='animationList' onclick="animationSelect('shake')">shake</button>
+        <button class='animationList' onclick="animationSelect('jello')">jello</button>   
+        <button class='animationList' onclick="animationSelect('lightSpeedIn')">lightSpeedIn</button>
+        <button class='animationList' onclick="animationSelect('hinge')">hinge</button>
+    </div>
+  </div>
+<div id='theSelectedWraper'></div>
+
+
+</body>
+
+</html>
