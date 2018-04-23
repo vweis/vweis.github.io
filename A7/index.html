@@ -6,91 +6,87 @@
 
 <style>
   .animationList{
-    width: 100%;
-    height: 50px;
-    background: none;
-    border: none;
-    box-shadow: 0px 0px 1px;
+    width:100%;
+    height:50px;
+    background:none;
+    border:none;
+    box-shadow:0px 0px 1px;
   }
   #target {
-  margin:2em 2em;
-  animation-duration: 3s;
-  animation-delay: 0s;
-  animation-iteration-count: infinite;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-delay: 0s;
-  -webkit-animation-iteration-count: infinite;
+  animation-duration:3s;
+  animation-delay:0s;
+  animation-iteration-count:infinite;
+  -webkit-animation-duration:3s;
+  -webkit-animation-delay:0s;
+  -webkit-animation-iteration-count:infinite;
 }
-  html, body{
-    margin: 0px;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+  body{
+    margin:0px;
   }
   p{
     margin:0px;
-    float: right;
+    float:right;
     word-wrap:break-word;
   }
   #timezoneSelection{
-    position: fixed;
-    min-width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,.5);
-    padding: 30%;
-    display: none;
+    position:fixed;
+    min-width:100%;
+    height:100%;
+    background:rgba(0,0,0,.5);
+    padding:30%;
+    display:none;
   }
   #theListWraper{
-    width: 15.63em;
-    float: left;
-    height: 100%;
-    background: lightgray;
+    width:250px;
+    float:left;
+    height:100%;
+    background:lightgray;
+    overflow:scroll;
   }
   #theSelectedWraper{
-    width: calc(100% - 15.63em);
-    float: right;
-    position: absolute;
-    height: 100%;
-    margin:5% 45% 0% 20%;
+    width:400px;
+    float:right;
+    position:absolute;
+    height:400px;
+    margin:5% 35% 0% 20%;
   }
   .active{
-    background: gold;
+    background:gold;
   }
 </style>
+
 <script>
-function animationSelect(selected){
-  var markup = "<div class='animated infinite " + selected + "' id='target' style='width:300px;height:300px;background-color:red;'></div>"
+function animationSelect(selected, n){
+  var markup = "<div class='animated infinite " + selected + "' id='target' style='width:400px;height:400px;background-color:red;'></div>"
   document.getElementById("theSelectedWraper").innerHTML = markup
 
   $(".animationList").removeClass("active");
-  $(".animationList:nth-of-type(" + (n+1) + ")").addClass("active");
+  $(".animationList:nth-of-type(" + n + ")").addClass("active");
 }
-
 function start(){
-    animationSelect('');
+    animationSelect('',1);
+    var animationOptions = ['bounce','flash','pulse','rubberBand','shake','headShake','swing','tada','wobble','jello','bounceIn','bounceInDown','bounceInLeft','bounceInRight','bounceInUp','bounceOut','bounceOutDown','bounceOutLeft','bounceOutRight','bounceOutUp','fadeIn','fadeInDown','fadeInDownBig','fadeInLeft','fadeInLeftBig','fadeInRight','fadeInRightBig','fadeInUp','fadeInUpBig','fadeOut','fadeOutDown','fadeOutDownBig','fadeOutLeft','fadeOutLeftBig','fadeOutRight','fadeOutRightBig','fadeOutUp','fadeOutUpBig','flipInX','flipInY','flipOutX','flipOutY','lightSpeedIn','lightSpeedOut','rotateIn','rotateInDownLeft','rotateInDownRight','rotateInUpLeft','rotateInUpRight','rotateOut','rotateOutDownLeft','rotateOutDownRight','rotateOutUpLeft','rotateOutUpRight','hinge','jackInTheBox','rollIn','rollOut','zoomIn','zoomInDown','zoomInLeft','zoomInRight','zoomInUp','zoomOut','zoomOutDown','zoomOutLeft','zoomOutRight','zoomOutUp','slideInDown','slideInLeft','slideInRight','slideInUp','slideOutDown','slideOutLeft','slideOutRight','slideOutUp'];
+    var buttonMarkup = "";
+    var i = 0;
+    for (i = 0; i < animationOptions.length; i++) {
+      buttonMarkup += "<button class='animationList' onclick="+'"'+"animationSelect('"+animationOptions[i]+"',"+(i + 1)+")"+'"'+">" + animationOptions[i] + "</button>" 
+    }
+    document.getElementById("theList").innerHTML = buttonMarkup
 }
 </script>
 </head>
 
 <body onload='start()'>
   <div id='theListWraper'>
-    <h1> Animate.css <h1>
+    <h1> Animate.css </h1>
 
     <div id='theList'>
         <button class='animationList' onclick="animationSelect('bounce')">bounce</button>
         <button class='animationList' onclick="animationSelect('flash')">flash</button>
-        <button class='animationList' onclick="animationSelect('tada')">tada</button>
-        <button class='animationList' onclick="animationSelect('fadeIn')">fadeIn</button>
-        <button class='animationList' onclick="animationSelect('fadeOut')">fadeOut</button>
-        <button class='animationList' onclick="animationSelect('shake')">shake</button>
-        <button class='animationList' onclick="animationSelect('jello')">jello</button>   
-        <button class='animationList' onclick="animationSelect('lightSpeedIn')">lightSpeedIn</button>
-        <button class='animationList' onclick="animationSelect('hinge')">hinge</button>
+
     </div>
   </div>
 <div id='theSelectedWraper'></div>
 
-
 </body>
-
 </html>
